@@ -1,0 +1,1 @@
+Las capturas reales se guardan aqui luego de ejecutar MLflow en un entorno autorizado.

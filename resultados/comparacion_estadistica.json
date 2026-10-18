@@ -1,0 +1,12 @@
+{
+  "method": "bootstrap pareado estratificado de casos de test",
+  "resamples": 2000,
+  "seed": 42,
+  "difference": "F1_macro(random_forest) - F1_macro(regresion_logistica)",
+  "point_difference": -0.017143970387687446,
+  "ci95_percentile": [
+    -0.049801924165251865,
+    0.0
+  ],
+  "interpretation_limit": "Descriptivo; no atribuir significacion estadistica causal ni generalizacion poblacional por el test pequeno."
+}
