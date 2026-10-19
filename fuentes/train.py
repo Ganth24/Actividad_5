@@ -256,8 +256,13 @@ def ejecutar_experimento(repo_root: Path, enable_mlflow: bool = True) -> dict:
                     mlflow.log_artifact(str(artifact), artifact_path="evidencia")
                 # Ejemplo y firma para reproducibilidad de la interfaz del modelo.
                 signature = infer_signature(X_train.head(5), best.predict(X_train.head(5)))
-                mlflow.sklearn.log_model(sk_model=best, name="modelo_pipeline", signature=signature,
-                    input_example=X_train.head(5))
+                mlflow.sklearn.log_model(
+                    sk_model=best,
+                    name="modelo_pipeline",
+                    signature=signature,
+                    input_example=X_train.head(5),
+                    skops_trusted_types=["numpy.dtype"]
+                )
                 # Se anidan los hiperparametros probados, con su resultado CV.
                 for i, row in candidates.iterrows():
                     with mlflow.start_run(run_name=f"candidato_{i+1:02d}_{nombre}", nested=True):
